@@ -30,9 +30,9 @@
 //    [self threadPerformaceInRunLoop];
     
     
-//    [ViewController observerTest];
+    [ViewController observerTest];
     
-    [ViewController nestTest];
+//    [ViewController nestTest];
     
 }
 
@@ -164,7 +164,7 @@
         });
         
         
-         [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(doFireTimer) userInfo:nil repeats:NO];
+         [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(doFireTimer) userInfo:nil repeats:YES];
         CFRunLoopAddObserver([[NSRunLoop currentRunLoop] getCFRunLoop], observer, kCFRunLoopDefaultMode);
         [[NSRunLoop currentRunLoop] run];
         
@@ -181,7 +181,7 @@
 {
     // 在另外一个 子线程中开启 runloop
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSTimer *tickTimer = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:1 target:self selector:@selector(timerHandler) userInfo:nil repeats:YES];
+        NSTimer *tickTimer = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:2 target:self selector:@selector(timerHandler) userInfo:nil repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:tickTimer forMode:NSDefaultRunLoopMode];
         
         //  使用限定的时间 来终止 runloop的时间
@@ -199,7 +199,9 @@
 + (void)timerHandler
 {
     // 查看当前的 runloop 的运行mode
-    NSLog(@"timer11 - %@ runtloop is: %@",[[NSRunLoop currentRunLoop] currentMode],[NSRunLoop currentRunLoop]);
+//    NSLog(@"timer11 - %@ runtloop is: %@",[[NSRunLoop currentRunLoop] currentMode],[NSRunLoop currentRunLoop]);
+    //
+    NSLog(@"timer11 - %@ ",[[NSRunLoop currentRunLoop] currentMode]);
     static dispatch_once_t onceToken;
     
     // 防止 多次添加 timer， 开发中应特别注意
@@ -217,7 +219,8 @@
 // 第二个加入 timer2 中的方法
 + (void)timerHandler2
 {
-    NSLog(@"timer222 - %@ runloop is: %@",[[NSRunLoop currentRunLoop] currentMode],[NSRunLoop currentRunLoop]);
+//    NSLog(@"timer222 - %@ runloop is: %@",[[NSRunLoop currentRunLoop] currentMode],[NSRunLoop currentRunLoop]);
+    NSLog(@"timer222 - %@",[[NSRunLoop currentRunLoop] currentMode]);
     CFRunLoopStop([[NSRunLoop currentRunLoop] getCFRunLoop]);
 }
 
