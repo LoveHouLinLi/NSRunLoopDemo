@@ -14,6 +14,7 @@
 		BF02600F1F886AA300C5D3BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF02600D1F886AA300C5D3BA /* LaunchScreen.storyboard */; };
 		BF0260121F886AA300C5D3BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0260111F886AA300C5D3BA /* main.m */; };
 		BF02601A1F8B857E00C5D3BA /* ExpriViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF0260191F8B857E00C5D3BA /* ExpriViewController.m */; };
+		BFA35D671F8C46400086A59D /* BigImageCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA35D661F8C46400086A59D /* BigImageCellViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		BF0260111F886AA300C5D3BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BF0260181F8B857E00C5D3BA /* ExpriViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpriViewController.h; sourceTree = "<group>"; };
 		BF0260191F8B857E00C5D3BA /* ExpriViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpriViewController.m; sourceTree = "<group>"; };
+		BFA35D651F8C46400086A59D /* BigImageCellViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigImageCellViewController.h; sourceTree = "<group>"; };
+		BFA35D661F8C46400086A59D /* BigImageCellViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BigImageCellViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				BF0260061F886AA300C5D3BA /* ViewController.m */,
 				BF0260181F8B857E00C5D3BA /* ExpriViewController.h */,
 				BF0260191F8B857E00C5D3BA /* ExpriViewController.m */,
+				BFA35D651F8C46400086A59D /* BigImageCellViewController.h */,
+				BFA35D661F8C46400086A59D /* BigImageCellViewController.m */,
 				BF0260081F886AA300C5D3BA /* Main.storyboard */,
 				BF02600B1F886AA300C5D3BA /* Assets.xcassets */,
 				BF02600D1F886AA300C5D3BA /* LaunchScreen.storyboard */,
@@ -148,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF0260071F886AA300C5D3BA /* ViewController.m in Sources */,
+				BFA35D671F8C46400086A59D /* BigImageCellViewController.m in Sources */,
 				BF0260121F886AA300C5D3BA /* main.m in Sources */,
 				BF0260041F886AA300C5D3BA /* AppDelegate.m in Sources */,
 				BF02601A1F8B857E00C5D3BA /* ExpriViewController.m in Sources */,
