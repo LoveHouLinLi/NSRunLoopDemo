@@ -6,6 +6,8 @@
 //  Copyright © 2017年 DeLongYang. All rights reserved.
 /*
     主要介绍NSRunLoop 的 部分概念 但是 笔者认为 有些概念还是得实验一下为好
+    !!! 注意跳转到 UI 测试界面的时候 需要将 这个页面的runloop 停掉
+     不然会影响 其他UI界面的效果
  */
 
 #import "ViewController.h"
@@ -30,7 +32,7 @@
 //    [self threadPerformaceInRunLoop];
     
     
-    [ViewController observerTest];
+//    [ViewController observerTest];
     
 //    [ViewController nestTest];
     
@@ -223,6 +225,8 @@
     NSLog(@"timer222 - %@",[[NSRunLoop currentRunLoop] currentMode]);
     CFRunLoopStop([[NSRunLoop currentRunLoop] getCFRunLoop]);
 }
+
+
 
 
 
