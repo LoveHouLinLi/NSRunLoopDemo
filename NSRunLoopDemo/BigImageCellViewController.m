@@ -65,6 +65,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     BigImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"xibCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.willShowIndexPath = indexPath;
@@ -77,6 +78,7 @@
             return NO;
         }
         [cell addLeftImage];
+//        NSLog(@"add left image");
         return YES;
     } withId:indexPath];
     

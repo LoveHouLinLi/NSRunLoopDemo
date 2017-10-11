@@ -47,10 +47,9 @@ DLSINGLE_M(Instance)
         self.taskKeys = [NSMutableArray array];
         
         // 毫秒级别的循环刷新 这样可以比屏幕刷新的频率 要快不会造成卡顿
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.001 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            
-        }];
-        
+//        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.001 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//
+//        }];
         // 添加runloop 观察者
         [self addRunLoopObserver];
         
@@ -112,7 +111,7 @@ static void Callback(CFRunLoopObserverRef observer, CFRunLoopActivity activity, 
 - (void)addRunLoopObserver
 {
     // get current runloop ref - 指针
-    CFRunLoopRef current = CFRunLoopGetCurrent();
+    CFRunLoopRef current = CFRunLoopGetCurrent();    
     // 获取RunloopObserver
     CFRunLoopObserverRef defaultModeObserver;
     
