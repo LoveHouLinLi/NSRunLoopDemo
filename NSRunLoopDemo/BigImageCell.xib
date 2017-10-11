@@ -31,19 +31,19 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qd-ri-cDi" userLabel="ImageContentView">
                         <rect key="frame" x="8" y="29" width="304" height="58"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bigImage" translatesAutoresizingMaskIntoConstraints="NO" id="iDc-Bv-Y52">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iDc-Bv-Y52">
                                 <rect key="frame" x="0.0" y="0.0" width="90" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="kRR-03-B0G"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bigImage" translatesAutoresizingMaskIntoConstraints="NO" id="jMq-1h-8qh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jMq-1h-8qh">
                                 <rect key="frame" x="204" y="0.0" width="100" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="x3l-Wp-vTP"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bigImage" translatesAutoresizingMaskIntoConstraints="NO" id="BvW-wO-lfx">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BvW-wO-lfx">
                                 <rect key="frame" x="95" y="0.0" width="104" height="58"/>
                             </imageView>
                         </subviews>
@@ -85,10 +85,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="leftImgView" destination="iDc-Bv-Y52" id="pFp-zx-JqN"/>
+                <outlet property="middleImgView" destination="BvW-wO-lfx" id="q1A-kb-t07"/>
+                <outlet property="rightImgView" destination="jMq-1h-8qh" id="Wbk-CG-e9H"/>
+            </connections>
             <point key="canvasLocation" x="-78" y="71"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="bigImage" width="1280" height="800"/>
-    </resources>
 </document>

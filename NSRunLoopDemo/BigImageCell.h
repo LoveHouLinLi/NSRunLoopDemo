@@ -10,4 +10,15 @@
 
 @interface BigImageCell : UITableViewCell
 
+- (void)cleanImageView;
+
+- (void)addLeftImage;
+
+- (void)addMiddleImage;
+
+- (void)addRightImage;
+
+- (void)setImageView;
+
+
 @end

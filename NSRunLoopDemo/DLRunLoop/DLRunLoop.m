@@ -17,8 +17,16 @@
  */
 @property (nonatomic,strong)NSTimer *timer;
 
+
+/**
+ 任务数组
+ */
 @property (nonatomic,strong)NSMutableArray *tasks;
 
+
+/**
+ 任务的keys
+ */
 @property (nonatomic,strong)NSMutableArray *taskKeys;
 
 @end
@@ -34,16 +42,17 @@ DLSINGLE_M(Instance)
     self = [super init];
     if (self) {
         // 初始化对象/基本信息
-        _maxQueue = 18;
-        _tasks = [NSMutableArray array];
-        _taskKeys = [NSMutableArray array];
+        self.maxQueue = 18;
+        self.tasks = [NSMutableArray array];
+        self.taskKeys = [NSMutableArray array];
         
         // 毫秒级别的循环刷新 这样可以比屏幕刷新的频率 要快不会造成卡顿
-        _timer = [NSTimer scheduledTimerWithTimeInterval:0.001 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.001 repeats:YES block:^(NSTimer * _Nonnull timer) {
             
         }];
         
-        
+        // 添加runloop 观察者
+        [self addRunLoopObserver];
         
     }
     return self;
@@ -52,13 +61,23 @@ DLSINGLE_M(Instance)
 #pragma mark ---- 公用方法 添加和移除任务
 - (void)addTask:(DLRunLoopBlock)unit withId:(id)key
 {
+    // 添加任务到数组
+    [self.tasks addObject:unit];
+    [self.taskKeys addObject:key];
+    
+    // 为了保证加载到图片最大数是18 所以要删除
+    if (self.tasks.count > self.maxQueue) {
+        [self.tasks removeObjectAtIndex:0];
+        [self.taskKeys removeObjectAtIndex:0];
+    }
     
 }
 
 
 - (void)removeAllTasks
 {
-    
+    [self.tasks removeAllObjects];
+    [self.taskKeys removeAllObjects];
 }
 
 #pragma mark ----  添加runloop 监听者
@@ -73,7 +92,7 @@ static void Callback(CFRunLoopObserverRef observer, CFRunLoopActivity activity, 
         return;
     }
     
-    // result  
+    // result
     BOOL result = NO;
     while (result == NO && runloop.tasks.count) {
         
@@ -138,7 +157,8 @@ static void Callback(CFRunLoopObserverRef observer, CFRunLoopActivity activity, 
                                                   &context);
     
     //添加当前runloop的观察着
-    CFRunLoopAddObserver(current, defaultModeObserver, kCFRunLoopDefaultMode);
+    CFRunLoopAddObserver(current, defaultModeObserver, kCFRunLoopCommonModes);
+    
     
     //释放
     CFRelease(defaultModeObserver);

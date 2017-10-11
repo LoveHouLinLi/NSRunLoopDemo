@@ -13,6 +13,8 @@
 
 #import "BigImageCellViewController.h"
 #import "BigImageCell.h"
+#import "DLRunLoop.h"
+
 
 @interface BigImageCellViewController () <UITableViewDataSource,UITableViewDelegate>
 
@@ -35,6 +37,7 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [[DLRunLoop shareInstance] removeAllTasks];
 }
 
 
@@ -63,8 +66,47 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BigImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"xibCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.willShowIndexPath = indexPath;
+    [cell cleanImageView];
+    
+    #if 1   // 是否开启runloop优化
+    
+    [[DLRunLoop shareInstance] addTask:^BOOL{
+        if (![cell.willShowIndexPath isEqual:indexPath]) {
+            return NO;
+        }
+        [cell addLeftImage];
+        return YES;
+    } withId:indexPath];
+    
+    [[DLRunLoop shareInstance] addTask:^BOOL{
+        if (![cell.willShowIndexPath isEqual:indexPath]) {
+            return NO;
+        }
+        [cell addRightImage];
+        return YES;
+    } withId:indexPath];
+    
+    [[DLRunLoop shareInstance] addTask:^BOOL{
+        if (![cell.willShowIndexPath isEqual:indexPath]) {
+            return NO;
+        }
+        [cell addMiddleImage];
+
+        return YES;
+    } withId:indexPath];
+    
+    #else
+    [cell setImageView];
+    #endif
+    
     return  cell;
 }
+
+
+
+
 
 #pragma mark ----  UITableView Delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
