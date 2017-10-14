@@ -9,6 +9,8 @@
     使用 nsrunloop 来分批加载cell 并且只在滑动停止的情况下加载图片
     实际上: 在真实的应用中 列表中都是缩略图 点击小图查看大图 这是在移动端
     经常优化的方法。
+    在一些大图 加载的时候 我们采取加载一张卸载一张的策略 也就是用户看到的始终
+    只有一个大图 没有
  */
 
 #import "BigImageCellViewController.h"
@@ -78,7 +80,7 @@
             return NO;
         }
         [cell addLeftImage];
-//        NSLog(@"add left image");
+        // NSLog(@"add left image");
         return YES;
     } withId:indexPath];
     
